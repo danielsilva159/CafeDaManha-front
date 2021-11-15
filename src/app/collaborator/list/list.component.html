@@ -1,0 +1,59 @@
+
+<div class="title-page">
+  <h1>Bem vindo a lista de quem vai trazer o que para o cafe da manhã</h1>
+</div>
+<div class="container">
+<div class="button-new-request">
+     <button class="btn btn-primary" (click)="request()">Novo Colaborador</button>
+     <button class="btn btn-info"  data-toggle="modal" data-target="#modal-link-options">Vincular opções café da manhã</button>
+     <button class="btn btn-success"  routerLink="/create-option">Cadastrar item café da manhã</button>
+</div>
+<div class="row">
+  <div class="card col-3" style="width: 18rem;" *ngFor="let collaborator of collaboratorsOfOptions" >
+    <div class="card-body">
+      <h5 class="card-title">Card Funcionario</h5>
+      <p>Nome: {{collaborator.name}} </p>
+      <p>CPF: {{collaborator.cpf}} </p>
+      <ul>
+        <li *ngFor="let o of collaborator.options" >{{o.option}}</li>
+      </ul>
+      <button  class="btn btn-primary">Editar</button>
+      <button  class="btn btn-danger">Excluir</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="modal-link-options" tabindex="-1" role="dialog" aria-labelledby="modal-link-options"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Vincular o Colaborador ao item do café da manhã</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label for="name-collaborator">Colaboradores Cadastrados</label>
+          <select  id="name-collaborator" class="form-control" [(ngModel)]="selectedContributor">
+            <option selected=true disabled>Informe um colaborador</option>
+            <option *ngFor="let collaborator of collaborators" value="{{collaborator.id}}" >{{collaborator.name}}</option>
+          </select>
+        </div>
+        <div>
+          <label *ngFor="let option of options" >
+            <input type="checkbox" value="{{option.name}}" (click)="marked($event)"/>
+            {{option.name}}
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveOptionsCollaborator()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

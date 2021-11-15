@@ -1,0 +1,14 @@
+.button-new-request{
+  display: flex;
+  justify-content: space-between;
+}
+.button-new-request button{
+  margin-right: 10px;
+}
+.title-page{
+  text-align: center;
+}
+
+.card{
+  margin: 10px;
+}

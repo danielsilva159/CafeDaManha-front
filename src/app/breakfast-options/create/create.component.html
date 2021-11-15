@@ -1,0 +1,10 @@
+<div>
+  <div><h1>Cadastrando item para a lista para o cafe da manhã</h1></div>
+  <div class="row">
+    <div class="col-6">
+      <label for="option" class="form-label">Digite o nome da opção.:</label>
+      <input type="text" class="form-control" [formControl]="name" id="option" (keyup.enter)="save()"><br>
+      <button class="btn btn-primary"(click)="save()">Salvar</button>
+    </div>
+  </div>
+</div>
