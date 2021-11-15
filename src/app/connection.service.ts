@@ -30,8 +30,8 @@ export class ConnectionService {
   return this.http.get<CreateComponent[]>(`/api/listofoptions`)
   }
 
-  createCollaborator(item: any): Observable<String>{
-    return this.http.post<String>(`/api/collaborator`, item)
+  createCollaborator(item: any): Observable<Collaborator>{
+    return this.http.post<Collaborator>(`/api/collaborator`, item)
   }
 
   listCollaborator(){

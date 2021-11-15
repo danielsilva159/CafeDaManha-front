@@ -73,11 +73,8 @@ export class ListComponent implements OnInit {
         cpf: collaborator.cpf,
         options: this.markedOptions
       }
-      console.log(this.collaborator);
-
-      this.connectionService.updateCollaborator(collaborator.id, this.collaborator).subscribe(data => {
-        console.log(data);
-
+      this.connectionService.updateCollaborator(collaborator.id, this.collaborator).subscribe(() => {
+        this.listCollaborator();
       })
     }
 

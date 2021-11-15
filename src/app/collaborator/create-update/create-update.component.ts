@@ -12,21 +12,29 @@ export class CreateUpdateComponent implements OnInit {
   name:  new FormControl('', Validators.required),
   cpf :  new FormControl('', Validators.required)
   })
-  mensagem = false
+  mostraMensagem = false
+  mensagem = '';
 
   constructor(private connectionService: ConnectionService) { }
 
   ngOnInit(): void {}
   save() {
     this.connectionService.createCollaborator(this.form.value).subscribe(collaborator => {
-      console.log(collaborator);
+     console.log(collaborator);
 
-      this.mensagem=true
       this.form.reset();
-      setTimeout(() => {
-        this.mensagem = false
-      }, 3000)
+
+    }, (erro) => {
+      this.msg(erro.error.text)
    })
 
-}
+  }
+
+  msg(mensage: string) {
+    this.mensagem = mensage;
+    this.mostraMensagem = true;
+     setTimeout(() => {
+        this.mostraMensagem = false
+     }, 3000)
+  }
 }
